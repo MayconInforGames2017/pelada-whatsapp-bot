@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  whatsapp-gateway:
+    image: devlikeapro/wppconnect:latest
+    container_name: whatsapp-gateway
+    volumes:
+      - ./gateway:/usr/src/app/storage
+    ports:
+      - "21465:21465"
+    restart: always
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./n8n:/home/node/.n8n
+    restart: always
